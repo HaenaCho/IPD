@@ -21,6 +21,10 @@ let timerY = 160;
 let unitY = 183;
 let audioRectY = 132;
 
+// Menu sizes
+let audioRectWidth = 120;
+let audioRectHeight = 72;
+
 // Font sizes
 let titleSize = 18;
 let subtitleSize = 11;
@@ -160,7 +164,7 @@ function menu () {
   text ("1. Set Timer", width/2, 83);
   text ("2. Set Background Audio", width/2, 114);
   text ("3. Hall of Fame", width/2, 145);
-  text ("4. Brain Twisters", width/2 - 50, 176);
+  text ("4. Brain Teasers", width/2 - 50, 176);
   fill (255, 0, 0);
   textSize (10);
   text (addZeros (resetMin, 2) + " : " + addZeros (resetSec, 2), width/2 + 100, 176);
@@ -261,8 +265,8 @@ function setBackgroundAudio () {
   rectMode (CENTER);
   fill (255);
   stroke (0);
-  rect (width/2 - 80, audioRectY, 120, 72);
-  rect (width/2 + 80, audioRectY, 120, 72);
+  rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
+  rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
 
   fill (0);
   noStroke ();
@@ -305,8 +309,8 @@ function hallOfFame () {
   // Records
   textAlign (LEFT);
   textSize (12);
-  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 115, 112);
-  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 115, 132);
+  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 113, 92);
+  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 113, 112);
 
   /* stroke (0); noFill ();
   rectMode (CENTER);
@@ -314,12 +318,12 @@ function hallOfFame () {
   rect (width/2, 209, width - 50, 20); */
 
   // Press
-  fill (0);
+  /* fill (0);
   textAlign (CENTER);
   textSize (pressSize);
   text ("Press           to delete record.", width/2, pressY);
   fill (255, 0, 0);
-  ellipse (width/2 - 34, pressY - 3, 10, 10);
+  ellipse (width/2 - 34, pressY - 3, 10, 10); */
 }
 
 function brainTwisters () {
@@ -338,14 +342,14 @@ function brainTwisters () {
   rectMode (CENTER);
   fill (255);
   stroke (0);
-  rect (width/2 - 100, audioRectY, 150, 90);
-  rect (width/2 + 100, audioRectY, 150, 90);
+  rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
+  rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
 
   fill (0);
   noStroke ();
   textSize (15);
-  text ("Arithmetic\nGames", width/2 - 100, audioRectY - 2);
-  text ("Game 2", width/2 + 100, audioRectY + 5);
+  text ("Arithmetic\nGames", width/2 - 80, audioRectY - 2);
+  text ("Game 2", width/2 + 80, audioRectY + 5);
 
   // Press
   fill (0);

@@ -18,15 +18,15 @@ let titleY = 50;
 let subY = 80;
 let pressY = 210;
 let timerY = 190;
-let unitY = 218;
+let unitY = 200;
 let audioRectY = 150;
 
 // Font sizes
-let titleSize = 22;
-let subtitleSize = 13;
+let titleSize = 20;
+let subtitleSize = 12;
 let pressSize = 10;
-let timerSize = 90;
-let unitSize = 13;
+let timerSize = 80;
+let unitSize = 12;
 
 // Set timer
 var setFirst = 0;

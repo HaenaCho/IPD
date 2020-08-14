@@ -16,9 +16,9 @@ let confirmY = horY - 55;
 // y Positions
 let titleY = 40;
 let subY = 60;
-let pressY = 210;
+let pressY = 213;
 let timerY = 160;
-let unitY = 180;
+let unitY = 183;
 let audioRectY = 150;
 
 // Font sizes
@@ -157,13 +157,13 @@ function menu () {
   fill (0);
   textAlign (CENTER);
   textSize (13);
-  text ("1. Set Timer", width/2, 83);
-  text ("2. Set Background Audio", width/2, 117);
-  text ("3. Hall of Fame", width/2, 151);
-  text ("4. Brain Twisters", width/2 - 50, 185);
+  text ("1. Set Timer", width/2, 80);
+  text ("2. Set Background Audio", width/2, 114);
+  text ("3. Hall of Fame", width/2, 148);
+  text ("4. Brain Twisters", width/2 - 50, 182);
   fill (255, 0, 0);
   textSize (10);
-  text (addZeros (resetMin, 2) + " : " + addZeros (resetSec, 2), width/2 + 100, 185);
+  text (addZeros (resetMin, 2) + " : " + addZeros (resetSec, 2), width/2 + 100, 182);
   
   // Press
   fill (0);
@@ -176,7 +176,7 @@ function menu () {
   noFill ();
   strokeWeight (3);
   stroke (255, 0, 0);
-  rect (width/2, 78 + 34*(selCount1 - 1), width - 75, 30);
+  rect (width/2, 78 + 34*(selCount1 - 1), width - 75, 27);
 }
 
 function setTimer () {

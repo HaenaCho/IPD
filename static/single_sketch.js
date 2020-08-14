@@ -79,7 +79,7 @@ function draw(){
   fill (255);
   noStroke ();
   rectMode (CENTER);
-  rect (450/2, 300/2, 450, 300);
+  rect (360/2, 240/2, 360, 240);
 
   // Current time
   var today = new Date ();
@@ -152,7 +152,6 @@ function menu () {
   textAlign (CENTER);
   textSize (titleSize);
   text ("Menu", width/2, titleY);
-  // text (document.body.clientWidth + ", " + document.body.clientHeight, width/2, titleY);
 
   // Context
   fill (0);

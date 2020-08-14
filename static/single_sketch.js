@@ -158,12 +158,12 @@ function menu () {
   textAlign (CENTER);
   textSize (13);
   text ("1. Set Timer", width/2, 83);
-  text ("2. Set Background Audio", width/2, 117);
-  text ("3. Hall of Fame", width/2, 151);
-  text ("4. Brain Twisters", width/2 - 50, 185);
+  text ("2. Set Background Audio", width/2, 114);
+  text ("3. Hall of Fame", width/2, 145);
+  text ("4. Brain Twisters", width/2 - 50, 176);
   fill (255, 0, 0);
   textSize (10);
-  text (addZeros (resetMin, 2) + " : " + addZeros (resetSec, 2), width/2 + 100, 185);
+  text (addZeros (resetMin, 2) + " : " + addZeros (resetSec, 2), width/2 + 100, 176);
   
   // Press
   fill (0);
@@ -176,7 +176,7 @@ function menu () {
   noFill ();
   strokeWeight (3);
   stroke (255, 0, 0);
-  rect (width/2, 78 + 34*(selCount1 - 1), width - 75, 27);
+  rect (width/2, 78 + 31*(selCount1 - 1), width - 75, 27);
 }
 
 function setTimer () {

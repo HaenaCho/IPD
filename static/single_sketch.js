@@ -38,9 +38,10 @@ var setSecond = 0;
 var setTime = 60*setFirst + setSecond;
 
 // Time variables
-var studyHrs = 0;
-var studyMins = 0;
-var studySecs = 0;
+var studyTime = 0;
+var studyHrs = studyTime/3600;
+var studyMins = (studyTime - studyHrs)/60;
+var studySecs = studyTime - studyHrs - studyMins;
 
 var resetTime = 250;
 var resetSec = resetTime % 60;
@@ -362,9 +363,11 @@ function brainTwisters () {
 }
 
 function studyMode () {
-  studySecs ++;
-  if (studySecs > 59) studyMins ++;
-  if (studyMins > 59) studyHrs ++;
+  studyTime = setInterval (countSeconds, 1000);
+}
+
+function countSeconds () {
+  seconds ++;
 }
 
 function mousePressed () {

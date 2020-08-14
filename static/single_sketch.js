@@ -6,20 +6,20 @@ let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 // Button Positions
 let leftX = 70;
 let rightX = 160;
-let horY = 395;
+let horY = 405;
 
-let backX = 290;
-let backY = horY + 85;
-let confirmX = 330;
-let confirmY = horY - 60;
+let backX = 250;
+let backY = horY + 90;
+let confirmX = 290;
+let confirmY = horY - 55;
 
 // y Positions
 let titleY = 50;
 let subY = 80;
-let pressY = 270;
-let timerY = 205;
-let unitY = 238;
-let audioRectY = 170;
+let pressY = 210;
+let timerY = 190;
+let unitY = 218;
+let audioRectY = 150;
 
 // Font sizes
 let titleSize = 22;

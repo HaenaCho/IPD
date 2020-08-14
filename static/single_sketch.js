@@ -54,7 +54,7 @@ function preload () {
 }
 
 function setup (){
-  createCanvas (1080, 1920);
+  createCanvas (360, 616);
   background("pink");
   textFont (myFont);
 
@@ -151,8 +151,8 @@ function menu () {
   noStroke ();
   textAlign (CENTER);
   textSize (titleSize);
-  // text ("Menu", width/2, titleY);
-  text (document.body.clientWidth + ", " + document.body.clientHeight, width/2, titleY);
+  text ("Menu", width/2, titleY);
+  // text (document.body.clientWidth + ", " + document.body.clientHeight, width/2, titleY);
 
   // Context
   fill (0);

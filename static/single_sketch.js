@@ -55,7 +55,7 @@ function preload () {
 
 function setup (){
   createCanvas (360, 616);
-  background("pink");
+  background("black");
   textFont (myFont);
 
   // Buttons
@@ -157,13 +157,13 @@ function menu () {
   fill (0);
   textAlign (CENTER);
   textSize (13);
-  text ("1. Set Timer", width/2, 80);
-  text ("2. Set Background Audio", width/2, 114);
-  text ("3. Hall of Fame", width/2, 148);
-  text ("4. Brain Twisters", width/2 - 50, 182);
+  text ("1. Set Timer", width/2, 83);
+  text ("2. Set Background Audio", width/2, 117);
+  text ("3. Hall of Fame", width/2, 151);
+  text ("4. Brain Twisters", width/2 - 50, 185);
   fill (255, 0, 0);
   textSize (10);
-  text (addZeros (resetMin, 2) + " : " + addZeros (resetSec, 2), width/2 + 100, 182);
+  text (addZeros (resetMin, 2) + " : " + addZeros (resetSec, 2), width/2 + 100, 185);
   
   // Press
   fill (0);

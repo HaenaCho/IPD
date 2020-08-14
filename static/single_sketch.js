@@ -15,7 +15,7 @@ let confirmY = horY - 55;
 
 // y Positions
 let titleY = 40;
-let subY = 60;
+let subY = 61;
 let pressY = 213;
 let timerY = 160;
 let unitY = 183;
@@ -347,7 +347,7 @@ function brainTwisters () {
 
   fill (0);
   noStroke ();
-  textSize (15);
+  textSize (13);
   text ("Arithmetic\nGames", width/2 - 80, audioRectY - 2);
   text ("Game 2", width/2 + 80, audioRectY + 5);
 

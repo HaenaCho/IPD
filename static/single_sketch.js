@@ -14,19 +14,19 @@ let confirmX = 290;
 let confirmY = horY - 55;
 
 // y Positions
-let titleY = 50;
-let subY = 80;
+let titleY = 48;
+let subY = 70;
 let pressY = 210;
-let timerY = 190;
-let unitY = 200;
+let timerY = 170;
+let unitY = 190;
 let audioRectY = 150;
 
 // Font sizes
-let titleSize = 20;
-let subtitleSize = 12;
+let titleSize = 18;
+let subtitleSize = 11;
 let pressSize = 10;
 let timerSize = 80;
-let unitSize = 12;
+let unitSize = 11;
 
 // Set timer
 var setFirst = 0;

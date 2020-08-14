@@ -47,7 +47,7 @@ var mode = 1;
 var selCount1 = 1;
 
 function preload () {
-  myFont = loadFont ('./assets/EIGHTBITDRAGON-ANQX.ttf');
+  myFont = loadFont ('./assets/EIGHTBITDRAGON-ANQX.TTF');
   imgs[0] = loadImage ('./assets/goldMedal.png');
   imgs[1] = loadImage ('./assets/silverMedal.png');
   imgs[2] = loadImage ('./assets/bronzeMedal.png');

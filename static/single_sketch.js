@@ -5,12 +5,12 @@ let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 // Button Positions
 let leftX = 70;
-let rightX = 170;
-let horY = 445;
+let rightX = 160;
+let horY = 395;
 
-let backX = 310;
+let backX = 290;
 let backY = horY + 85;
-let confirmX = 350;
+let confirmX = 330;
 let confirmY = horY - 60;
 
 // y Positions

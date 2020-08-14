@@ -4,9 +4,9 @@ let imgs = [];
 let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 // Button Positions
-let leftX = 90;
-let rightX = 180;
-let horY = 545;
+let leftX = 70;
+let rightX = 170;
+let horY = 445;
 
 let backX = 310;
 let backY = horY + 85;

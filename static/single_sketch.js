@@ -19,7 +19,7 @@ let subY = 60;
 let pressY = 213;
 let timerY = 160;
 let unitY = 183;
-let audioRectY = 150;
+let audioRectY = 130;
 
 // Font sizes
 let titleSize = 18;
@@ -261,14 +261,14 @@ function setBackgroundAudio () {
   rectMode (CENTER);
   fill (255);
   stroke (0);
-  rect (width/2 - 100, audioRectY, 150, 90);
-  rect (width/2 + 100, audioRectY, 150, 90);
+  rect (width/2 - 90, audioRectY, 120, 72);
+  rect (width/2 + 90, audioRectY, 120, 72);
 
   fill (0);
   noStroke ();
-  textSize (15);
-  text ("Default", width/2 - 100, audioRectY + 5);
-  text ("Choose from \n Phone", width/2 + 100, audioRectY - 2);
+  textSize (13);
+  text ("Default", width/2 - 90, audioRectY + 5);
+  text ("Choose from \n Phone", width/2 + 90, audioRectY - 2);
 
   // Press
   fill (0);
@@ -292,22 +292,22 @@ function hallOfFame () {
 
   // Context
   // Rankings
-  image (imgs[0],30, 101, 14, 18);
-  image (imgs[1],30, 121, 14, 18);
-  image (imgs[2],30, 141, 14, 18);
+  image (imgs[0],27, 81, 14, 18);
+  image (imgs[1],27, 101, 14, 18);
+  image (imgs[2],27, 121, 14, 18);
   textAlign (CENTER);
   textSize (13);
-  text ("4", 37, 176);
-  text ("5", 37, 196);
-  text ("6", 37, 216);
-  text ("7", 37, 236);
-  text ("8", 37, 256);
+  text ("4", 34, 156);
+  text ("5", 34, 176);
+  text ("6", 34, 196);
+  text ("7", 34, 216);
+  text ("8", 37, 236);
 
   // Records
   textAlign (LEFT);
-  textSize (13);
-  text ("00 hr 00 min 00 sec" + "                      " + "2019. 00. 00", width/2 - 120, 115);
-  text ("00 hr 00 min 00 sec" + "                      " + "2019. 00. 00", width/2 - 120, 135);
+  textSize (12);
+  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 120, 115);
+  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 120, 135);
 
   /* stroke (0); noFill ();
   rectMode (CENTER);

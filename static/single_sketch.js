@@ -363,11 +363,9 @@ function brainTwisters () {
 }
 
 function studyMode () {
-  studyTime = setInterval (countSeconds, 1000);
-}
-
-function countSeconds () {
-  seconds ++;
+  var dummyNum = 0;
+  dummyNum ++;
+  if (dummyNum % 1000 == 0) studyTime ++;
 }
 
 function mousePressed () {

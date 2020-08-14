@@ -1,0 +1,22 @@
+{
+  "name": "p5.js-templates",
+  "version": "1.0.0",
+  "description": "p5.js templates for ID311 Software Prototyping.",
+  "main": "multi_sketch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makinteractlab/p5.js-templates.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makinteractlab/p5.js-templates/issues"
+  },
+  "homepage": "https://github.com/makinteractlab/p5.js-templates#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

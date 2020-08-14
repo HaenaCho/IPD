@@ -134,6 +134,8 @@ function draw(){
       hallOfFame (); break;
     case 40:
       brainTwisters (); break;
+    case 50:
+      studyMode (); break;
   }
 }
 
@@ -359,6 +361,12 @@ function brainTwisters () {
   ellipse (width/2 - 12, pressY - 3, 10, 10);
 }
 
+function studyMode () {
+  studySecs ++;
+  if (studySecs > 59) studyMins ++;
+  if (studyMins > 59) studyHrs ++;
+}
+
 function mousePressed () {
   print (mouseX +", " + mouseY);
   if (leftX - 22 < mouseX && mouseX < leftX + 22 && horY - 22 < mouseY && mouseY < horY + 22) {
@@ -407,6 +415,8 @@ function mousePressed () {
       mode = 10*selCount1;
     } else if (9 < mode && mode < 11) {
       mode ++;
+    } else if (mode == 11) {
+      mode = 50;
     }
   }
 }

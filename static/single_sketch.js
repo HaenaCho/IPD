@@ -151,7 +151,8 @@ function menu () {
   noStroke ();
   textAlign (CENTER);
   textSize (titleSize);
-  text ("Menu", width/2, titleY);
+  // text ("Menu", width/2, titleY);
+  text (document.body.clientWidth + ", " + document.body.clientHeight, width/2, titleY);
 
   // Context
   fill (0);

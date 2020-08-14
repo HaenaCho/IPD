@@ -54,8 +54,8 @@ function preload () {
 }
 
 function setup (){
-  createCanvas (450, 800);
-  background(0);
+  createCanvas (1080, 1920);
+  background("#ff0000");
   textFont (myFont);
 
   // Buttons

@@ -131,6 +131,8 @@ function draw(){
       setTimer2 (); break;
     case 20:
       setBackgroundAudio (); break;
+    case 21:
+      setBackgroundAudio2 (); break;
     case 30:
       hallOfFame (); break;
     case 40:
@@ -263,6 +265,72 @@ function setBackgroundAudio () {
   // Subtitle
   textSize (subtitleSize);
   text ("Choose your background audio.", width/2, subY);
+
+  // Context
+  rectMode (CENTER);
+  fill (255);
+  stroke (0);
+  rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
+  rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
+
+  fill (0);
+  noStroke ();
+  textSize (13);
+  text ("Default", width/2 - 80, audioRectY + 5);
+  text ("Choose from \n Phone", width/2 + 80, audioRectY - 2);
+
+  // Press
+  fill (0);
+  textSize (pressSize);
+  text ("Press           to select.", width/2, pressY);
+  fill (0, 155, 50);
+  ellipse (width/2 - 12, pressY - 3, 10, 10);
+}
+
+function setBackgroundAudio2 () {
+  // Title
+  fill (0);
+  noStroke ();
+  textAlign (CENTER);
+  textSize (titleSize);
+  text ("Set Background Audio", width/2, titleY);
+
+  // Subtitle
+  textSize (subtitleSize);
+  text ("Choose among default audio.", width/2, subY);
+
+  // Context
+  rectMode (CENTER);
+  fill (255);
+  stroke (0);
+  rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
+  rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
+
+  fill (0);
+  noStroke ();
+  textSize (13);
+  text ("Default", width/2 - 80, audioRectY + 5);
+  text ("Choose from \n Phone", width/2 + 80, audioRectY - 2);
+
+  // Press
+  fill (0);
+  textSize (pressSize);
+  text ("Press           to select.", width/2, pressY);
+  fill (0, 155, 50);
+  ellipse (width/2 - 12, pressY - 3, 10, 10);
+}
+
+function setBackgroundAudio3 () {
+  // Title
+  fill (0);
+  noStroke ();
+  textAlign (CENTER);
+  textSize (titleSize);
+  text ("Set Background Audio", width/2, titleY);
+
+  // Subtitle
+  textSize (subtitleSize);
+  text ("Choose among internal audio.", width/2, subY);
 
   // Context
   rectMode (CENTER);

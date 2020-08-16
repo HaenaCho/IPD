@@ -52,6 +52,7 @@ var mode = 1;
 var selCount1 = 1;
 var selCount2 = 1;
 var selCount3 = 1;
+var gameMode = 0; // 0 for false, 1 for true
 
 function preload () {
   myFont = loadFont ('./assets/EIGHTBITDRAGON-ANQX.TTF');
@@ -135,6 +136,8 @@ function draw(){
       setBackgroundAudio (); break;
     case 21:
       setBackgroundAudio2 (); break;
+    case 2:
+      setBackgroundAudio3 (); break;
     case 30:
       hallOfFame (); break;
     case 40:
@@ -488,7 +491,18 @@ function studyMode () {
   text ("Study hard! ! !", width/2, subY);
 
   // Context
-  
+  setInterval (setTime --, 1000);
+  setFirst = setTime/60;
+  setSecond = setTime - 60*setFirst;
+
+  textSize (timerSize);
+  fill (0);
+  text (addZeros (setFirst, 2), width/2 - 100, timerY);
+  text (" : ", width/2, timerY);
+  text (addZeros (setSecond, 2), width/2 + 100, timerY);
+  textSize (unitSize);
+  text ("Min", width/2 - 55, unitY);
+  text ("Sec", width/2 + 145, unitY);
 
   // Press
   fill (0);

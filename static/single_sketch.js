@@ -2,6 +2,7 @@
 let myFont;
 let imgs = [];
 let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+let mySound = [];
 
 // Button Positions
 let leftX = 45;
@@ -59,6 +60,10 @@ function preload () {
   imgs[0] = loadImage ('./assets/goldMedal.png');
   imgs[1] = loadImage ('./assets/silverMedal.png');
   imgs[2] = loadImage ('./assets/bronzeMedal.png');
+  soundFormats('mp3');
+  mySound[0] = loadSound('assets/Pen_Writing');
+  mySound[1] = loadSound('assets/Rain_Water_Dripping_Softly)');
+  mySound[2] = loadSound('assets/Kiss_the_Sky');
 }
 
 function setup (){
@@ -318,7 +323,7 @@ function setBackgroundAudio2 () {
   text ("Choose among default audio.", width/2, subY);
 
   // Context
-  
+  mySound[2].play();
 
   // Press
   fill (0);
@@ -419,7 +424,7 @@ function brainTwisters () {
   noStroke ();
   textSize (13);
   text ("Arithmetic\nGames", width/2 - 80, audioRectY - 2);
-  text ("Game 2", width/2 + 80, audioRectY + 5);
+  text ("Memory\nGames", width/2 + 80, audioRectY + 5);
 
   // Press
   fill (0);
@@ -467,7 +472,7 @@ function brainTwisters3 () {
 
   // Subtitle
   textSize (subtitleSize);
-  text ("DUNNO", width/2, subY);
+  text ("Memorize the order of arrows!", width/2, subY);
 
   // Context
   
@@ -494,7 +499,7 @@ function studyMode () {
   text (setTime, width/2, subY);
 
   // Context
-  setInterval (function () {setTime --;}, 1000);
+  setInterval (setTime --, 1000);
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
 

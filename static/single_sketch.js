@@ -35,7 +35,8 @@ let unitSize = 11;
 // Set timer
 var setFirst = 0;
 var setSecond = 0;
-var setTime = 60*setFirst + setSecond;
+var setTime = 0;
+// var setTime = 60*setFirst + setSecond;
 
 // Time variables
 var studyTime = 0;
@@ -567,6 +568,7 @@ function mousePressed () {
     } else if (9 < mode && mode < 11) {
       mode ++;
     } else if (mode == 11) {
+      setTime = 60*setFirst + setSecond;
       mode = 50;
     } else if (mode == 20) {
       mode += selCount2;

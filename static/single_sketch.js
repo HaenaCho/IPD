@@ -494,7 +494,7 @@ function studyMode () {
   text (setTime, width/2, subY);
 
   // Context
-  setInterval (setTime --, 1000);
+  setInterval (setInterval (setTime --, 1000), 60);
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
 
@@ -587,7 +587,7 @@ function mousePressed () {
       mode ++;
     } else if (mode == 11) {
       setTime = 60*setFirst + setSecond;
-      mode = 50;
+      if (setTime > 0) mode = 50;
     } else if (mode == 20) {
       mode += selCount2;
     } else if (mode == 40) {

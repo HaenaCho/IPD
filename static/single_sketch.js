@@ -6,12 +6,12 @@ let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 // Button Positions
 let leftX = 45;
 let rightX = 140;
-let horY = 465;
+let horY = 468;
 
 let backX = 270;
-let backY = horY + 130;
+let backY = horY + 125;
 let confirmX = 310;
-let confirmY = horY - 55;
+let confirmY = horY - 60;
 
 // y Positions
 let titleY = 40;

@@ -493,7 +493,7 @@ function studyMode () {
   text (setTime, width/2, subY);
 
   // Context
-  setInterval (setTime --, 1000);
+  setInterval (setTime --, 60000);
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
 

@@ -493,7 +493,7 @@ function studyMode () {
   text (setTime, width/2, subY);
 
   // Context
-  setInterval (setTime --, 60000);
+  while (setTime > 0) setInterval (setTime --, 1000);
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
 
@@ -512,6 +512,12 @@ function studyMode () {
   text ("Press           to pause.", width/2, pressY);
   fill (255, 0, 0);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
+
+  // Time up
+  if (setTime == 0) {
+    fill (0);
+    rect (width/2, 120, width, 240);
+  }
 }
 
 function mousePressed () {

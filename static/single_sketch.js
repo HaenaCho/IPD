@@ -514,17 +514,13 @@ function studyMode () {
   text ("Press           to pause.", width/2, pressY);
   fill (255, 0, 0);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
-
-  // Time up
-  if (setTime == 0) {
-    mode = 60;
-  }
 }
 
 function timeUp () {
   // Press
   fill (0);
   textSize (pressSize);
+  textAlign (CENTER);
   text ("Press any button to go back to menu.", width/2, pressY);
 }
 

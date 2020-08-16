@@ -4,14 +4,14 @@ let imgs = [];
 let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 // Button Positions
-let leftX = 40;
+let leftX = 45;
 let rightX = 140;
 let horY = 465;
 
 let backX = 270;
-let backY = horY + 140;
+let backY = horY + 130;
 let confirmX = 310;
-let confirmY = horY - 45;
+let confirmY = horY - 55;
 
 // y Positions
 let titleY = 40;

@@ -62,7 +62,7 @@ function preload () {
   imgs[2] = loadImage ('./assets/bronzeMedal.png');
   soundFormats('mp3');
   mySound[0] = loadSound('assets/Pen_Writing');
-  mySound[1] = loadSound('assets/Rain_Water_Dripping_Softly)');
+  mySound[1] = loadSound('assets/Rain_Water_Dripping_Softly');
   mySound[2] = loadSound('assets/Kiss_the_Sky');
 }
 

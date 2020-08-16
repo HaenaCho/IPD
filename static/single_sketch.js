@@ -4,14 +4,14 @@ let imgs = [];
 let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 // Button Positions
-let leftX = 50;
-let rightX = 130;
-let horY = 435;
+let leftX = 40;
+let rightX = 140;
+let horY = 465;
 
-let backX = 260;
-let backY = horY + 130;
-let confirmX = 300;
-let confirmY = horY - 35;
+let backX = 270;
+let backY = horY + 140;
+let confirmX = 310;
+let confirmY = horY - 45;
 
 // y Positions
 let titleY = 40;
@@ -68,15 +68,15 @@ function setup (){
   ellipseMode (CENTER);
   // Back
   fill (255, 0, 0);
-  ellipse (backX, backY, 60, 60);
+  ellipse (backX, backY, 80, 80);
   // Confirm
   fill (0, 155, 20);
-  ellipse (confirmX, confirmY, 60, 60);
+  ellipse (confirmX, confirmY, 80, 80);
   fill (255);
   // Left
-  ellipse (leftX, horY, 45, 45);
+  ellipse (leftX, horY, 80, 80);
   // Right
-  ellipse (rightX, horY, 45, 45);
+  ellipse (rightX, horY, 80, 80);
 }
 
 function draw(){
@@ -436,7 +436,7 @@ function studyMode () {
 
 function mousePressed () {
   print (mouseX +", " + mouseY);
-  if (leftX - 22 < mouseX && mouseX < leftX + 22 && horY - 22 < mouseY && mouseY < horY + 22) {
+  if (leftX - 40 < mouseX && mouseX < leftX + 40 && horY - 40 < mouseY && mouseY < horY + 40) {
     print ("left");
     if (mode == 1) {
       selCount1 --;
@@ -455,7 +455,7 @@ function mousePressed () {
       
     }
   }
-  if (rightX - 22 < mouseX && mouseX < rightX + 22 && horY - 22 < mouseY && mouseY < horY + 22) {
+  if (rightX - 40 < mouseX && mouseX < rightX + 40 && horY - 40 < mouseY && mouseY < horY + 40) {
     print ("right");
     if (mode == 1) {
       selCount1 ++;
@@ -468,7 +468,7 @@ function mousePressed () {
       if (setSecond > 59) setSecond = 0;
     }
   }
-  if (backX - 30 < mouseX && mouseX < backX + 30 && backY - 30 < mouseY && mouseY < backY + 30) {
+  if (backX - 40 < mouseX && mouseX < backX + 40 && backY - 40 < mouseY && mouseY < backY + 40) {
     print ("back");
     if (mode % 10 == 0) {
       mode = 1;
@@ -476,7 +476,7 @@ function mousePressed () {
       mode --;
     }
   }
-  if (confirmX - 30 < mouseX && mouseX < confirmX + 30 && confirmY - 30 < mouseY && mouseY < confirmY + 30) {
+  if (confirmX - 40 < mouseX && mouseX < confirmX + 40 && confirmY - 40 < mouseY && mouseY < confirmY + 40) {
     print ("confirm");
     if (mode == 1) {
       mode = 10*selCount1;

@@ -489,11 +489,13 @@ function studyMode () {
 
   // Subtitle
   textSize (subtitleSize);
-  // text ("Study hard! ! !", width/2, subY);
-  text (setTime, width/2, subY);
+  text ("Study hard! ! !", width/2, subY);
 
   // Context
-
+  setInterval (setTime --, 1000);
+  setSecond = setTime % 60;
+  setFirst = (setTime - setSecond)/60;
+  
   textSize (timerSize);
   fill (0);
   text (addZeros (setFirst, 2), width/2 - 100, timerY);

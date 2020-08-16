@@ -9,9 +9,9 @@ let rightX = 140;
 let horY = 470;
 
 let backX = 270;
-let backY = horY + 120;
+let backY = horY + 100;
 let confirmX = 310;
-let confirmY = horY - 65;
+let confirmY = horY - 85;
 
 // y Positions
 let titleY = 40;
@@ -51,6 +51,7 @@ var resetMin = (resetTime - resetSec) / 60;
 var mode = 1;
 var selCount1 = 1;
 var selCount2 = 1;
+var selCount3 = 1;
 
 function preload () {
   myFont = loadFont ('./assets/EIGHTBITDRAGON-ANQX.TTF');
@@ -138,6 +139,10 @@ function draw(){
       hallOfFame (); break;
     case 40:
       brainTwisters (); break;
+    case 41:
+      brainTwisters2 (); break;
+    case 42:
+      brainTwisters3 (); break;
     case 50:
       studyMode (); break;
   }
@@ -308,17 +313,7 @@ function setBackgroundAudio2 () {
   text ("Choose among default audio.", width/2, subY);
 
   // Context
-  rectMode (CENTER);
-  fill (255);
-  stroke (0);
-  rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
-  rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
-
-  fill (0);
-  noStroke ();
-  textSize (13);
-  text ("Default", width/2 - 80, audioRectY + 5);
-  text ("Choose from \n Phone", width/2 + 80, audioRectY - 2);
+  
 
   // Press
   fill (0);
@@ -341,17 +336,7 @@ function setBackgroundAudio3 () {
   text ("Choose among internal audio.", width/2, subY);
 
   // Context
-  rectMode (CENTER);
-  fill (255);
-  stroke (0);
-  rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
-  rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
-
-  fill (0);
-  noStroke ();
-  textSize (13);
-  text ("Default", width/2 - 80, audioRectY + 5);
-  text ("Choose from \n Phone", width/2 + 80, audioRectY - 2);
+  
 
   // Press
   fill (0);
@@ -421,6 +406,7 @@ function brainTwisters () {
   rectMode (CENTER);
   fill (255);
   stroke (0);
+  strokeWeight (2);
   rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
   rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
 
@@ -436,10 +422,80 @@ function brainTwisters () {
   text ("Press           to select.", width/2, pressY);
   fill (0, 155, 50);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
+
+  // Selection
+  noFill ();
+  strokeWeight (3);
+  stroke (255, 0, 0);
+  rect (width/2 - 80 + 160*(selCount3 - 1), audioRectY, audioRectWidth, audioRectHeight);
+}
+
+function brainTwisters2 () {
+  // Title
+  fill (0);
+  noStroke ();
+  textAlign (CENTER);
+  textSize (titleSize);
+  text ("Brain Teasers", width/2, titleY);
+
+  // Subtitle
+  textSize (subtitleSize);
+  text ("Choose the correct answer!", width/2, subY);
+
+  // Context
+
+  // Press
+  fill (0);
+  textSize (pressSize);
+  text ("Press           to select.", width/2, pressY);
+  fill (0, 155, 50);
+  ellipse (width/2 - 12, pressY - 3, 10, 10);
+}
+
+function brainTwisters3 () {
+  // Title
+  fill (0);
+  noStroke ();
+  textAlign (CENTER);
+  textSize (titleSize);
+  text ("Brain Teasers", width/2, titleY);
+
+  // Subtitle
+  textSize (subtitleSize);
+  text ("DUNNO", width/2, subY);
+
+  // Context
+  
+
+  // Press
+  fill (0);
+  textSize (pressSize);
+  text ("Press           to select.", width/2, pressY);
+  fill (0, 155, 50);
+  ellipse (width/2 - 12, pressY - 3, 10, 10);
 }
 
 function studyMode () {
+  // Title
+  fill (0);
+  noStroke ();
+  textAlign (CENTER);
+  textSize (titleSize);
+  text ("Study Mode", width/2, titleY);
+
+  // Subtitle
+  textSize (subtitleSize);
+  text ("Study hard! ! !", width/2, subY);
+
+  // Context
   
+
+  // Press
+  fill (0);
+  textSize (pressSize);
+  text ("Press           to pause.", width/2, pressY);
+  fill (255, 0, 0);
+  ellipse (width/2 - 12, pressY - 3, 10, 10);
 }
 
 function mousePressed () {
@@ -461,7 +517,8 @@ function mousePressed () {
     } else if (mode == 30) {
 
     } else if (mode == 40) {
-      
+      selCount3 --;
+      if (selCount3 < 1) selCount3 = 2;
     }
   }
   if (rightX - 40 < mouseX && mouseX < rightX + 40 && horY - 40 < mouseY && mouseY < horY + 40) {
@@ -478,6 +535,9 @@ function mousePressed () {
     } else if (mode == 20) {
       selCount2 ++;
       if (selCount2 > 2) selCount2 = 1;
+    } else if (mode == 40) {
+      selCount3 ++;
+      if (selCount3 > 2) selCount3 = 1;
     }
   }
   if (backX - 40 < mouseX && mouseX < backX + 40 && backY - 40 < mouseY && mouseY < backY + 40) {
@@ -496,6 +556,10 @@ function mousePressed () {
       mode ++;
     } else if (mode == 11) {
       mode = 50;
+    } else if (mode == 20) {
+      mode += selCount2;
+    } else if (mode == 40) {
+      mode += selCount3;
     }
   }
 }

@@ -494,7 +494,7 @@ function studyMode () {
   text (setTime, width/2, subY);
 
   // Context
-  setInterval (setInterval (setTime --, 1000), 60);
+  setInterval (function () {setTime --}, 1000);
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
 
@@ -518,6 +518,17 @@ function studyMode () {
 }
 
 function timeUp () {
+  // Title
+  fill (0);
+  noStroke ();
+  textAlign (CENTER);
+  textSize (titleSize);
+  text ("Times up!", width/2, titleY);
+
+  // Subtitle
+  textSize (subtitleSize);
+  text ("Congrats! ! You did a nice job :)", width/2, subY);
+
   // Press
   fill (0);
   textSize (pressSize);

@@ -35,8 +35,7 @@ let unitSize = 11;
 // Set timer
 var setFirst = 0;
 var setSecond = 0;
-var setTime = 0;
-// var setTime = 60*setFirst + setSecond;
+var setTime = 60*setFirst + setSecond;
 
 // Time variables
 var studyTime = 0;
@@ -495,9 +494,11 @@ function studyMode () {
   text (setTime, width/2, subY);
 
   // Context
-  while (setTime > 0) setInterval (setTime --, 1000);
+  setInterval (setTime --, 1000);
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
+
+  if (setTime == 0) mode = 60;
 
   textSize (timerSize);
   fill (0);

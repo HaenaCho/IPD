@@ -53,6 +53,8 @@ var mode = 1;
 var selCount1 = 1;
 var selCount2 = 1;
 var selCount3 = 1;
+var selCount4 = 1;
+var soundNum = 0;
 var gameMode = 0; // 0 for false, 1 for true
 
 function preload () {
@@ -141,7 +143,7 @@ function draw(){
       setBackgroundAudio (); break;
     case 21:
       setBackgroundAudio2 (); break;
-    case 2:
+    case 22:
       setBackgroundAudio3 (); break;
     case 30:
       hallOfFame (); break;
@@ -155,6 +157,8 @@ function draw(){
       studyMode (); break;
     case 60:
       timeUp (); break;
+    case 70:
+      pauseStudy (); break;
   }
 }
 
@@ -323,7 +327,10 @@ function setBackgroundAudio2 () {
   text ("Choose among default audio.", width/2, subY);
 
   // Context
-  mySound[2].play();
+  textSize (13);
+  text ("1. Sound of Pen Writing", width/2, 110);
+  text ("2. Sound of Rain Water", width/2, 141);
+  text ("3. Classical Music", width/2, 172);
 
   // Press
   fill (0);
@@ -331,6 +338,12 @@ function setBackgroundAudio2 () {
   text ("Press           to select.", width/2, pressY);
   fill (0, 155, 50);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
+
+  // Selection
+  noFill ();
+  strokeWeight (3);
+  stroke (255, 0, 0);
+  rect (width/2, 105 + 31*(selCount4 - 1), width - 75, 27);
 }
 
 function setBackgroundAudio3 () {
@@ -499,6 +512,7 @@ function studyMode () {
   text (setTime, width/2, subY);
 
   // Context
+  // Time Count
   setInterval (setTime --, 1000);
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
@@ -514,11 +528,48 @@ function studyMode () {
   text ("Min", width/2 - 55, unitY);
   text ("Sec", width/2 + 145, unitY);
 
+  // Background Audio
+  if (soundNum != 0) mySound[soundNum].play ();
+
   // Press
   fill (0);
   textSize (pressSize);
   text ("Press           to pause.", width/2, pressY);
   fill (255, 0, 0);
+  ellipse (width/2 - 12, pressY - 3, 10, 10);
+}
+
+function pauseStudy () {
+  // Title
+  fill (0);
+  noStroke ();
+  textAlign (CENTER);
+  textSize (titleSize);
+  text ("Study Mode", width/2, titleY);
+
+  // Subtitle
+  textSize (subtitleSize);
+  // text ("Study hard! ! !", width/2, subY);
+  text (setTime, width/2, subY);
+
+  // Context
+  textSize (timerSize);
+  fill (0);
+  text (addZeros (setFirst, 2), width/2 - 100, timerY);
+  text (" : ", width/2, timerY);
+  text (addZeros (setSecond, 2), width/2 + 100, timerY);
+  textSize (unitSize);
+  text ("Min", width/2 - 55, unitY);
+  text ("Sec", width/2 + 145, unitY);
+
+  // Background Audio
+  if (soundNum != 0) mySound[soundNum].pause ();
+
+  // Press
+  fill (0);
+  textSize (pressSize);
+  text ("Press           to resume.", width/2, pressY);
+  fill (0, 155, 50);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
 }
 
@@ -542,7 +593,6 @@ function timeUp () {
 }
 
 function mousePressed () {
-  print (mouseX +", " + mouseY);
   if (leftX - 40 < mouseX && mouseX < leftX + 40 && horY - 40 < mouseY && mouseY < horY + 40) {
     print ("left");
     if (mode == 1) {
@@ -557,7 +607,10 @@ function mousePressed () {
     } else if (mode == 20) {
       selCount2 --;
       if (selCount2 < 1) selCount2 = 2;
-    } else if (mode == 30) {
+    } else if (mode == 21) {
+      selCount4 --;
+      if (selCount4 < 1) selCount4 = 3;
+    }else if (mode == 30) {
 
     } else if (mode == 40) {
       selCount3 --;
@@ -580,7 +633,10 @@ function mousePressed () {
     } else if (mode == 20) {
       selCount2 ++;
       if (selCount2 > 2) selCount2 = 1;
-    } else if (mode == 40) {
+    } else if (mode == 21) {
+      selCount4 ++;
+      if (selCount4 > 3) selCount4 = 1;
+    }else if (mode == 40) {
       selCount3 ++;
       if (selCount3 > 2) selCount3 = 1;
     } else if (mode == 60) {
@@ -589,11 +645,16 @@ function mousePressed () {
   }
   if (backX - 40 < mouseX && mouseX < backX + 40 && backY - 40 < mouseY && mouseY < backY + 40) {
     print ("back");
-    if (mode % 10 == 0) {
+    if (mode % 10 == 0 && mode != 50) {
       mode = 1;
     } else if (mode % 10 != 0 && mode != 1) {
       mode --;
+    } else if (mode == 50) {
+      mySound[soundNum].stop ();
+      mode = 70;
     }
+    // Stop music (YAMAE)
+    if (mode != 50 && soundNum != 0) mySound[soundNum].stop ();
   }
   if (confirmX - 40 < mouseX && mouseX < confirmX + 40 && confirmY - 40 < mouseY && mouseY < confirmY + 40) {
     print ("confirm");
@@ -606,10 +667,19 @@ function mousePressed () {
       if (setTime > 0) mode = 50;
     } else if (mode == 20) {
       mode += selCount2;
+    } else if (mode == 21) {
+      soundNum = selCount4 - 1;
+      if (setTime != 0) {
+        mode = 50;
+      } else {
+        mode = 1;
+      }
     } else if (mode == 40) {
       mode += selCount3;
     } else if (mode == 60) {
       mode = 1;
+    } else if (mode == 70) {
+      mode = 50;
     }
   }
 }

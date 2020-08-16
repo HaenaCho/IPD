@@ -149,6 +149,8 @@ function draw(){
       brainTwisters3 (); break;
     case 50:
       studyMode (); break;
+    case 60:
+      timeUp (); break;
   }
 }
 
@@ -515,9 +517,15 @@ function studyMode () {
 
   // Time up
   if (setTime == 0) {
-    fill (0);
-    rect (width/2, 120, width, 240);
+    mode = 60;
   }
+}
+
+function timeUp () {
+  // Press
+  fill (0);
+  textSize (pressSize);
+  text ("Press any button to go back to menu.", width/2, pressY);
 }
 
 function mousePressed () {
@@ -541,6 +549,8 @@ function mousePressed () {
     } else if (mode == 40) {
       selCount3 --;
       if (selCount3 < 1) selCount3 = 2;
+    } else if (mode == 60) {
+      mode = 1;
     }
   }
   if (rightX - 40 < mouseX && mouseX < rightX + 40 && horY - 40 < mouseY && mouseY < horY + 40) {
@@ -560,6 +570,8 @@ function mousePressed () {
     } else if (mode == 40) {
       selCount3 ++;
       if (selCount3 > 2) selCount3 = 1;
+    } else if (mode == 60) {
+      mode = 1;
     }
   }
   if (backX - 40 < mouseX && mouseX < backX + 40 && backY - 40 < mouseY && mouseY < backY + 40) {
@@ -583,6 +595,8 @@ function mousePressed () {
       mode += selCount2;
     } else if (mode == 40) {
       mode += selCount3;
+    } else if (mode == 60) {
+      mode = 1;
     }
   }
 }

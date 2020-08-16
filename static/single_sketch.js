@@ -6,12 +6,12 @@ let week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 // Button Positions
 let leftX = 45;
 let rightX = 140;
-let horY = 468;
+let horY = 470;
 
 let backX = 270;
-let backY = horY + 125;
+let backY = horY + 120;
 let confirmX = 310;
-let confirmY = horY - 60;
+let confirmY = horY - 65;
 
 // y Positions
 let titleY = 40;
@@ -50,6 +50,7 @@ var resetMin = (resetTime - resetSec) / 60;
 // TEST
 var mode = 1;
 var selCount1 = 1;
+var selCount2 = 1;
 
 function preload () {
   myFont = loadFont ('./assets/EIGHTBITDRAGON-ANQX.TTF');
@@ -269,6 +270,7 @@ function setBackgroundAudio () {
   // Context
   rectMode (CENTER);
   fill (255);
+  strokeWeight (2);
   stroke (0);
   rect (width/2 - 80, audioRectY, audioRectWidth, audioRectHeight);
   rect (width/2 + 80, audioRectY, audioRectWidth, audioRectHeight);
@@ -285,6 +287,12 @@ function setBackgroundAudio () {
   text ("Press           to select.", width/2, pressY);
   fill (0, 155, 50);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
+
+  // Selection
+  noFill ();
+  strokeWeight (3);
+  stroke (255, 0, 0);
+  rect (width/2 - 80 + 160*(selCount2 - 1), audioRectY, audioRectWidth, audioRectHeight);
 }
 
 function setBackgroundAudio2 () {
@@ -448,7 +456,8 @@ function mousePressed () {
       setSecond --;
       if (setSecond < 0) setSecond = 59;
     } else if (mode == 20) {
-
+      selCount2 --;
+      if (selCount2 < 1) selCount2 = 2;
     } else if (mode == 30) {
 
     } else if (mode == 40) {
@@ -466,6 +475,9 @@ function mousePressed () {
     } else if (mode == 11) {
       setSecond ++;
       if (setSecond > 59) setSecond = 0;
+    } else if (mode == 20) {
+      selCount2 ++;
+      if (selCount2 > 2) selCount2 = 1;
     }
   }
   if (backX - 40 < mouseX && mouseX < backX + 40 && backY - 40 < mouseY && mouseY < backY + 40) {

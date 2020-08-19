@@ -41,6 +41,9 @@ var setFirst = 0;
 var setSecond = 0;
 var setTime = 60*setFirst + setSecond;
 
+var placeFirst = 0;
+var placeSecond = 0;
+
 // Time variables
 var studyTime = 0;
 var studyHrs = 0;
@@ -52,6 +55,11 @@ var resetSec = resetTime % 60;
 var resetMin = (resetTime - resetSec) / 60;
 
 var startTime = 0;
+var startHour = 0;
+var startMin = 0;
+var startSec = 0;
+
+var fameTime = 0;
 
 // TEST
 var mode = 1;
@@ -60,6 +68,7 @@ var selCount2 = 1;
 var selCount3 = 1;
 var selCount4 = 1;
 var selCount5 = 1;
+var selCount6 = 1;
 var soundNum = 0;
 var gameMode = 0; // 0 for false, 1 for true
 
@@ -402,8 +411,16 @@ function hallOfFame () {
   // Records
   textAlign (LEFT);
   textSize (12);
-  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 113, 92);
-  text ("00 hr 00 min 00 sec" + "               " + "2019. 00. 00", width/2 - 113, 112);
+  text ("02 hr 28 min 42 sec" + "               " + "2020. 08. 19", width/2 - 113, 92);
+  text ("01 hr 32 min 09 sec" + "               " + "2020. 08. 11", width/2 - 113, 112);
+  
+  if (fameTime != 0) {
+    var fameSec = fameTime%60;
+    var fameMin = (fameTime % 3600 - fameSec)/60;
+    var fameHr = (fameTime - fameSec - 60*fameMin)/3600;
+
+    text (addZeros (fameHr, 2) + " hr " + addZeros (fameMin, 2) + " min " + addZeros (fameSec, 2) + " sec" + "               " + "2020. 08. 20", width/2 - 113, 132);
+  }
 
   /* stroke (0); noFill ();
   rectMode (CENTER);
@@ -504,10 +521,16 @@ function brainTwisters3 () {
 
   // Subtitle
   textSize (subtitleSize);
-  text ("Memorize the order of arrows!", width/2, subY);
+  text ("Choose the correct answer!", width/2, subY);
 
   // Context
-  
+  textSize (gameSize);
+  fill (0);
+  text ("17x12 = ?", width/2, timerY - 18);
+  textSize (answerSize);
+  text ("204", width/2 - 120, answerY);
+  text ("224", width/2, answerY);
+  text ("244", width/2 + 120, answerY);
 
   // Press
   fill (0);
@@ -515,6 +538,12 @@ function brainTwisters3 () {
   text ("Press           to select.", width/2, pressY);
   fill (0, 155, 50);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
+
+  // Selection
+  noFill ();
+  strokeWeight (3);
+  stroke (255, 0, 0);
+  rect (width/2 - 120 + 120*(selCount6 - 1), answerY - 6, 80, 25);
 }
 
 function studyMode () {
@@ -531,31 +560,47 @@ function studyMode () {
   // text (setTime, width/2, subY);
 
   // Context
-  // Time Count
- /*  setTime --;
-  setSecond = setTime % 60;
-  setFirst = (setTime - setSecond)/60;
-  
-  studyTime ++;
-  studySecs = studyTime;
-  if (studySecs > 59) {
-    studyMins ++;
-    studySecs = 0;
-  }
-  if (studyMins > 59) {
-    studyHrs ++;
-    studyMins = 0;
-  } */
 
-  if (startTime == 0) startTime = new Date ().getTime ();
+  if (startTime == 0) {
+    startTime = new Date ().getTime ();
+    startHour = new Date ().getHours ();
+    startMin = new Date ().getMinutes ();
+    startSec = new Date ().getSeconds ();
+
+    placeSecond = setSecond;
+    placeFirst = setFirst;
+  }
+
   var nowTime = new Date ().getTime ();
+  var nowHour = new Date ().getHours ();
+  var nowMin = new Date ().getMinutes ();
+  var nowSec = new Date ().getSeconds ();
+
   var newTime = new Date (nowTime - startTime);
 
-  studyHrs = newTime.getHours ();
+  studyHrs = nowHour - startHour;
   studyMins = newTime.getMinutes ();
   studySecs = newTime.getSeconds ();
 
-  setTime -= newTime.getSeconds ();
+  var goalSec = startSec + placeSecond;
+  var goalMin = startMin + placeFirst;
+  var goalHour = startHour;
+  if (goalSec > 60) {
+    goalMin ++;
+    goalSec -= 60;
+  }
+  if (goalMin > 60) {
+    goalHour ++;
+    goalMin -= 60;
+  }
+
+  var goalTime = goalSec + 60*goalMin + 3600*goalHour;
+  var nowTimeinSecs = nowSec + 60*nowMin + 3600*nowHour;
+
+  setTime = goalTime - nowTimeinSecs;
+  setSecond = setTime % 60;
+  setFirst = (setTime - setSecond)/60;
+
 
   if (setTime == 0) mode = 60;
 
@@ -618,14 +663,22 @@ function timeUp () {
   noStroke ();
   textAlign (CENTER);
   textSize (titleSize);
-  text ("Times up!", width/2, titleY);
+  text ("Time's up!", width/2, titleY);
 
   // Subtitle
   textSize (subtitleSize);
   text ("Congrats! ! You did a nice job :)", width/2, subY);
 
   // Context
-  startTime = 0;
+  textSize (timerSize - 35);
+  fill (0);
+  text ("Finished! ! !", width/2, timerY - 10);
+
+  if (startTime != 0) {
+    startTime = 0;
+    studyTime += 3600*studyHrs + 60*studyMins + studySecs;
+    fameTime = studyTime;
+  }
 
   // Press
   fill (0);
@@ -660,6 +713,9 @@ function mousePressed () {
     } else if (mode == 41) {
       selCount5 --;
       if (selCount5 < 1) selCount5 = 3;
+    } else if (mode == 42) {
+      selCount6 --;
+      if (selCount6 < 1) selCount6 = 3;
     } else if (mode == 60) {
       mode = 1;
     }
@@ -687,6 +743,9 @@ function mousePressed () {
     } else if (mode == 41) {
       selCount5 ++;
       if (selCount5 > 3) selCount5 = 1;
+    } else if (mode == 42) {
+      selCount6 ++;
+      if (selCount6 > 3) selCount6 = 1;
     } else if (mode == 60) {
       mode = 1;
     }
@@ -731,8 +790,7 @@ function mousePressed () {
       // arithmetic games
       if (selCount5 == 2) {
         // correct
-      } else {
-        // wrong
+        mode = 42;
       }
     } else if (mode == 60) {
       mode = 1;

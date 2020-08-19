@@ -527,8 +527,8 @@ function studyMode () {
 
   // Subtitle
   textSize (subtitleSize);
-  // text ("Study hard! ! !", width/2, subY);
-  text (setTime, width/2, subY);
+  text ("Study hard! ! !", width/2, subY);
+  // text (setTime, width/2, subY);
 
   // Context
   // Time Count
@@ -731,10 +731,6 @@ function mousePressed () {
       // arithmetic games
       if (selCount5 == 2) {
         // correct
-        stroke (0, 155, 50);
-        strokeWeight (5);
-        noFill ();
-        rect (width/2, 120, width, 240);
       } else {
         // wrong
       }

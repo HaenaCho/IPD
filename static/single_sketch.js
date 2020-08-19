@@ -21,6 +21,7 @@ let pressY = 213;
 let timerY = 160;
 let unitY = 183;
 let audioRectY = 132;
+let answerY = 182;
 
 // Menu sizes
 let audioRectWidth = 120;
@@ -32,6 +33,8 @@ let subtitleSize = 11;
 let pressSize = 10;
 let timerSize = 80;
 let unitSize = 11;
+let gameSize = 60;
+let answerSize = 15;
 
 // Set timer
 var setFirst = 0;
@@ -44,9 +47,11 @@ var studyHrs = 0;
 var studyMins = 0;
 var studySecs = 0;
 
-var resetTime = 250;
+var resetTime = 0;
 var resetSec = resetTime % 60;
 var resetMin = (resetTime - resetSec) / 60;
+
+var startTime = 0;
 
 // TEST
 var mode = 1;
@@ -54,6 +59,7 @@ var selCount1 = 1;
 var selCount2 = 1;
 var selCount3 = 1;
 var selCount4 = 1;
+var selCount5 = 1;
 var soundNum = 0;
 var gameMode = 0; // 0 for false, 1 for true
 
@@ -437,7 +443,7 @@ function brainTwisters () {
   noStroke ();
   textSize (13);
   text ("Arithmetic\nGames", width/2 - 80, audioRectY - 2);
-  text ("Memory\nGames", width/2 + 80, audioRectY + 5);
+  text ("Memory\nGames", width/2 + 80, audioRectY - 2);
 
   // Press
   fill (0);
@@ -466,6 +472,13 @@ function brainTwisters2 () {
   text ("Choose the correct answer!", width/2, subY);
 
   // Context
+  textSize (gameSize);
+  fill (0);
+  text ("29+36 = ?", width/2, timerY - 18);
+  textSize (answerSize);
+  text ("55", width/2 - 120, answerY);
+  text ("65", width/2, answerY);
+  text ("75", width/2 + 120, answerY);
 
   // Press
   fill (0);
@@ -473,6 +486,12 @@ function brainTwisters2 () {
   text ("Press           to select.", width/2, pressY);
   fill (0, 155, 50);
   ellipse (width/2 - 12, pressY - 3, 10, 10);
+
+  // Selection
+  noFill ();
+  strokeWeight (3);
+  stroke (255, 0, 0);
+  rect (width/2 - 120 + 120*(selCount5 - 1), answerY - 6, 80, 25);
 }
 
 function brainTwisters3 () {
@@ -513,10 +532,31 @@ function studyMode () {
 
   // Context
   // Time Count
-  setInterval (setTime --, 1000);
+ /*  setTime --;
   setSecond = setTime % 60;
   setFirst = (setTime - setSecond)/60;
+  
+  studyTime ++;
+  studySecs = studyTime;
+  if (studySecs > 59) {
+    studyMins ++;
+    studySecs = 0;
+  }
+  if (studyMins > 59) {
+    studyHrs ++;
+    studyMins = 0;
+  } */
 
+/*   if (startTime == 0) startTime = new Date ().getTime ();
+  var nowTime = new Date ().getTime ();
+  var newTime = new Date (nowTime - startTime);
+
+  studyHrs = newTime.getHours ();
+  studyMins = newTime.getMinutes ();
+  studySecs = newTime.getSeconds ();
+
+  setTime -= newTime.getSeconds ();
+ */
   if (setTime == 0) mode = 60;
 
   textSize (timerSize);
@@ -549,8 +589,7 @@ function pauseStudy () {
 
   // Subtitle
   textSize (subtitleSize);
-  // text ("Study hard! ! !", width/2, subY);
-  text (setTime, width/2, subY);
+  text ("Paused. . .", width/2, subY);
 
   // Context
   textSize (timerSize);
@@ -585,6 +624,9 @@ function timeUp () {
   textSize (subtitleSize);
   text ("Congrats! ! You did a nice job :)", width/2, subY);
 
+  // Context
+  startTime = 0;
+
   // Press
   fill (0);
   textSize (pressSize);
@@ -615,6 +657,9 @@ function mousePressed () {
     } else if (mode == 40) {
       selCount3 --;
       if (selCount3 < 1) selCount3 = 2;
+    } else if (mode == 41) {
+      selCount5 --;
+      if (selCount5 < 1) selCount5 = 3;
     } else if (mode == 60) {
       mode = 1;
     }
@@ -639,6 +684,9 @@ function mousePressed () {
     }else if (mode == 40) {
       selCount3 ++;
       if (selCount3 > 2) selCount3 = 1;
+    } else if (mode == 41) {
+      selCount5 ++;
+      if (selCount5 > 3) selCount5 = 1;
     } else if (mode == 60) {
       mode = 1;
     }
@@ -675,7 +723,21 @@ function mousePressed () {
         mode = 1;
       }
     } else if (mode == 40) {
-      mode += selCount3;
+      if (resetTime == 0) {
+        mode += selCount3;
+        gameMode = 1;
+      }
+    } else if (mode == 41) {
+      // arithmetic games
+      if (selCount5 == 2) {
+        // correct
+        stroke (0, 155, 50);
+        strokeWeight (5);
+        noFill ();
+        rect (width/2, 120, width, 240);
+      } else {
+        // wrong
+      }
     } else if (mode == 60) {
       mode = 1;
     } else if (mode == 70) {

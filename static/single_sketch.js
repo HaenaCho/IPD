@@ -547,7 +547,7 @@ function studyMode () {
     studyMins = 0;
   } */
 
-/*   if (startTime == 0) startTime = new Date ().getTime ();
+  if (startTime == 0) startTime = new Date ().getTime ();
   var nowTime = new Date ().getTime ();
   var newTime = new Date (nowTime - startTime);
 
@@ -556,7 +556,7 @@ function studyMode () {
   studySecs = newTime.getSeconds ();
 
   setTime -= newTime.getSeconds ();
- */
+
   if (setTime == 0) mode = 60;
 
   textSize (timerSize);
